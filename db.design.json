@@ -1,0 +1,335 @@
+[
+  {
+    "id": "dbschema",
+    "position": { "left": 44, "top": 39 },
+    "rows": [
+      {
+        "id": "pk",
+        "data": { "name": "pk", "type": "BigAutoField", "field_name": "pk" }
+      },
+      {
+        "data": {
+          "type": "CharField",
+          "max_length": "100",
+          "name": "name",
+          "null": false,
+          "field_name": "name",
+          "id": "name"
+        },
+        "id": "name"
+      },
+      {
+        "id": "description",
+        "data": {
+          "type": "CharField",
+          "name": "description",
+          "null": true,
+          "field_name": "description",
+          "max_length": "500",
+          "id": "description",
+          "options_target": ""
+        }
+      },
+      {
+        "id": "version",
+        "data": {
+          "id": "version",
+          "field_name": "version",
+          "name": "version",
+          "type": "CharField",
+          "max_length": "10"
+        }
+      },
+      {
+        "data": {
+          "type": "DateTimeField",
+          "field_name": "created_at",
+          "name": "createdAt",
+          "auto_now_add": true,
+          "id": "created_at"
+        },
+        "id": "created_at"
+      },
+      {
+        "id": "updated_at",
+        "data": {
+          "id": "updated_at",
+          "auto_now_add": false,
+          "auto_now": true,
+          "field_name": "updated_at",
+          "type": "DateTimeField",
+          "name": "updatedAt"
+        }
+      },
+      {
+        "data": {
+          "field_name": "data",
+          "id": "data",
+          "name": "data",
+          "type": "TextField",
+          "max_length": "10000"
+        },
+        "id": "data"
+      },
+      {
+        "id": "group_id",
+        "data": {
+          "max_length": "500",
+          "field_name": "group_id",
+          "type": "CharField",
+          "name": "groupId",
+          "id": "group_id"
+        }
+      }
+    ],
+    "data": {
+      "docs": "DB Schema",
+      "table_name": "dbschema",
+      "name": "DBSchema",
+      "id": "dbschema"
+    },
+    "type": "table"
+  },
+  {
+    "id": "dbschema_branch",
+    "position": { "top": 461, "left": 516 },
+    "rows": [
+      {
+        "data": { "name": "pk", "type": "BigAutoField", "field_name": "pk" },
+        "id": "pk"
+      },
+      {
+        "data": {
+          "id": "parent",
+          "target": "dbschema",
+          "on_delete": "CASCADE",
+          "related_name": "definitions",
+          "field_name": "parent",
+          "type": "ForeignKey",
+          "name": "parent"
+        },
+        "id": "parent"
+      },
+      {
+        "data": {
+          "name": "branchName",
+          "type": "CharField",
+          "id": "branch_name",
+          "field_name": "branch_name",
+          "max_length": "100"
+        },
+        "id": "branch_name"
+      },
+      {
+        "id": "data",
+        "data": {
+          "field_name": "data",
+          "name": "data",
+          "id": "data",
+          "type": "TextField",
+          "max_length": "10000"
+        }
+      },
+      {
+        "data": {
+          "name": "createdAt",
+          "type": "DateTimeField",
+          "id": "created_at",
+          "auto_now_add": true,
+          "field_name": "created_at"
+        },
+        "id": "created_at"
+      },
+      {
+        "data": {
+          "type": "DateTimeField",
+          "id": "updated_at",
+          "auto_now": true,
+          "field_name": "updated_at",
+          "name": "updatedAt"
+        },
+        "id": "updated_at"
+      },
+      {
+        "id": "merged",
+        "data": {
+          "type": "BooleanField",
+          "field_name": "merged",
+          "name": "merged",
+          "id": "merged"
+        }
+      }
+    ],
+    "data": {
+      "name": "DBSchemaBranch",
+      "table_name": "dbschema_branch",
+      "id": "dbschema_branch"
+    },
+    "type": "table"
+  },
+  {
+    "id": "templates",
+    "position": { "top": 38, "left": 556 },
+    "rows": [
+      {
+        "id": "pk",
+        "data": { "type": "BigAutoField", "field_name": "pk", "name": "pk" }
+      },
+      {
+        "data": {
+          "field_name": "short_name",
+          "name": "shortName",
+          "type": "CharField",
+          "id": "short_name",
+          "max_length": "100"
+        },
+        "id": "short_name"
+      },
+      {
+        "id": "description",
+        "data": {
+          "field_name": "description",
+          "id": "description",
+          "max_length": "600",
+          "name": "description",
+          "type": "TextField"
+        }
+      },
+      {
+        "id": "repo_link",
+        "data": {
+          "field_name": "repo_link",
+          "type": "CharField",
+          "name": "repo_link",
+          "id": "repo_link",
+          "max_length": "100"
+        }
+      },
+      {
+        "data": {
+          "id": "identifier",
+          "name": "identifier",
+          "field_name": "identifier",
+          "max_length": "40",
+          "type": "CharField"
+        },
+        "id": "identifier"
+      }
+    ],
+    "data": {
+      "name": "Templates",
+      "docs": "All templates are public",
+      "id": "templates",
+      "table_name": "templates"
+    },
+    "type": "table"
+  },
+  {
+    "id": "service",
+    "position": { "left": 914, "top": 295 },
+    "rows": [
+      {
+        "id": "pk",
+        "data": { "field_name": "pk", "type": "BigAutoField", "name": "pk" }
+      },
+      {
+        "id": "identifier",
+        "data": {
+          "type": "CharField",
+          "name": "identifier",
+          "field_name": "identifier",
+          "max_length": "50",
+          "id": "identifier"
+        }
+      },
+      {
+        "id": "group_id",
+        "data": {
+          "field_name": "group_id",
+          "type": "CharField",
+          "id": "group_id",
+          "max_length": "100",
+          "name": "groupId",
+          "null": true
+        }
+      }
+    ],
+    "data": { "name": "Service", "table_name": "service", "id": "service" },
+    "type": "table"
+  },
+  {
+    "id": "service_envs",
+    "position": { "top": 565, "left": 1381 },
+    "rows": [
+      {
+        "id": "pk",
+        "data": { "name": "pk", "type": "BigAutoField", "field_name": "pk" }
+      },
+      {
+        "id": "parent",
+        "data": {
+          "related_name": "envs",
+          "name": "parent",
+          "type": "ForeignKey",
+          "on_delete": "CASCADE",
+          "id": "parent",
+          "field_name": "parent",
+          "target": "service"
+        }
+      },
+      {
+        "id": "spec",
+        "data": {
+          "field_name": "spec",
+          "name": "spec",
+          "id": "spec",
+          "max_length": "10000",
+          "type": "TextField"
+        }
+      },
+      {
+        "data": {
+          "field_name": "env",
+          "options_target": "envs",
+          "id": "env",
+          "max_length": "10",
+          "name": "env",
+          "type": "CharField"
+        },
+        "id": "env"
+      },
+      {
+        "data": {
+          "max_length": "100",
+          "id": "base_url",
+          "name": "baseUrl",
+          "field_name": "base_url",
+          "type": "CharField"
+        },
+        "id": "base_url"
+      }
+    ],
+    "data": {
+      "id": "service_envs",
+      "table_name": "service_envs",
+      "name": "ServiceEnvs"
+    },
+    "type": "table"
+  },
+  {
+    "id": "envs",
+    "position": { "left": 1306, "top": 148 },
+    "rows": [],
+    "data": {
+      "id": "envs",
+      "name": "Envs",
+      "options": [
+        { "label": "dev", "value": "dev" },
+        { "label": "stage", "value": "stage" },
+        { "label": "prod", "value": "prod" }
+      ],
+      "table_name": "envs"
+    },
+    "type": "enum"
+  }
+]

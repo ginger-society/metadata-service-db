@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+
+    metadata-runtime:
+        image: db-compose-runtime:latest
+        ports:
+            - 8001:8000
+        environment:
+            - DB_NAME=metadata-db
+            - DB_USERNAME=postgres
+            - DB_PASSWORD=postgres
+            - DB_HOST=metadata-db
+            - DB_PORT=5432
+        volumes:
+            - ./models.py:/app/src/models.py
+            - ./admin.py:/app/src/admin.py
+            - ./migrations:/app/src/migrations
+        depends_on:
+            - metadata-db
+    metadata-db:
+        image: postgres:14.1-alpine
+        restart: always
+        environment:
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=postgres
+        ports:
+            - 5433:5432
+        volumes:
+            - ./pgsql:/var/lib/postgresql/data
+
+    metadata-redis:
+        image: bitnami/redis:6.2.5
+        restart: always
+        environment:
+            ALLOW_EMPTY_PASSWORD: "yes"
+        healthcheck:
+            test: redis-cli ping
+            interval: 1s
+            timeout: 3s
+            retries: 50
+        ports:
+            - 6380:6379
